@@ -1,4 +1,4 @@
-fn print_elements(elements: &Vec<String>) {
+fn print_elements(elements: &[String]) {
     // for element in elements {
     //     println!("{}", element);
     // }
@@ -17,5 +17,6 @@ fn main() {
         String::from("blue"),
     ];
 
-    print_elements(&colors);
+    //print_elements(&colors);
+    print_elements(&colors[1..3]);
 }
