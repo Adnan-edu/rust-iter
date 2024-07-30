@@ -1,13 +1,21 @@
+fn print_elements(elements: &Vec<String>) {
+    // for element in elements {
+    //     println!("{}", element);
+    // }
+    //elements.iter().for_each(|el| println!("{}", el)); //Iterator consumer
+    //Iterator adapter
+    elements
+        .iter()
+        .map(|el| format!("{} {}", el, el))
+        .for_each(|el| println!("{}", el));
+}
+
 fn main() {
     let colors = vec![
         String::from("red"),
         String::from("green"),
         String::from("blue"),
     ];
-    let mut color_iter = colors.iter();
 
-    println!("{:#?}", color_iter.next());
-    println!("{:#?}", color_iter.next());
-    println!("{:#?}", color_iter.next());
-    println!("{:#?}", color_iter.next());
+    print_elements(&colors);
 }
