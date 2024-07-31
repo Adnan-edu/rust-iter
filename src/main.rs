@@ -23,6 +23,18 @@ fn to_uppercase(elements: &[String]) -> Vec<String> {
 fn move_elements(vec_a: Vec<String>, vec_b: &mut Vec<String>) {
     vec_a.into_iter().for_each(|el| vec_b.push(el))
 }
+fn explode(elements: &[String]) -> Vec<Vec<String>> {
+    elements
+        .iter()
+        .map(|el| el.chars().map(|e| e.to_string()).collect::<Vec<String>>())
+        .collect::<Vec<Vec<String>>>()
+}
+fn find_color_or(elements: &[String], search: &str, fallback: &str) -> String {
+    elements
+        .iter()
+        .find(|el| el.contains(search))
+        .map_or(String::from(fallback), |el| el.to_string())
+}
 fn main() {
     let colors = vec![
         String::from("red"),
@@ -40,7 +52,13 @@ fn main() {
     //let uppercased = to_uppercase(&colors);
     //println!("{:#?}", uppercased);
 
-    let mut destination = vec![];
-    move_elements(colors, &mut destination);
-    println!("Destination: {:#?}", destination);
+    // let mut destination = vec![];
+    // move_elements(colors, &mut destination);
+    // println!("Destination: {:#?}", destination);
+
+    // let exploded = explode(&colors);
+    // println!("{:#?}", exploded);
+
+    let find_color = find_color_or(&colors, "re", "Orange");
+    println!("{}", find_color);
 }
